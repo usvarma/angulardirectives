@@ -1,0 +1,28 @@
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li 
+        class="page-item"
+        [ngClass]="{disabled: currentPage === 0}"
+      >
+      <a (click)="gotoPreviousPage()" class="page-link">Previous</a>
+    </li>
+    <li 
+        class="page-item" 
+        *ngFor="let image of images; let i = index"
+        [ngClass]="{active: i === currentPage}">
+      <a (click)="updateCurrentPage(i)" class="page-link" href="#">{{i+1}}</a>
+    </li>
+    <li 
+        class="page-item"
+        [ngClass]="{disabled: currentPage === images.length - 1}"
+      >
+      <a (click)="gotoNextPage()" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+
+<div>
+  <h4>{{images[currentPage].title}}</h4>
+    <img src="{{images[currentPage].url}}"/>
+</div>
